@@ -67,6 +67,7 @@ $selected_currency = array('ticker' => $_GET['ticker'], 'name' => $_GET['name'],
                 <li><a href="https://github.com/Ashintosh/opensrc.one" target="_blank">Source</a></li>
                 <li><a href="../pgp.txt" target="_blank">PGP</a></li>
                 <li><a href="http://opensrc5aqxbfanpzgyrn2tjq7juvpuvqm5rrw2ztxcxooajpsjyfrid.onion">Onion</a></li>
+                <li><a href="../canary.txt" target="_blank">Canary</a></li>
             </ul>
         </div>
     </body>

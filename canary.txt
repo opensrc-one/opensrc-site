@@ -1,0 +1,28 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Date: 2/28/2023
+Latest Bitcoin Block Hash: 000000000000000000018beee371bb44694e06ccba787980385301adcb708258
+Latest Monero Block Hash:  7f83cd77e1e911f3855f3ca7a44d5e63077d785ce12bb35642e5ba29f7f13be5
+Current Onion Mirror: opensrc5aqxbfanpzgyrn2tjq7juvpuvqm5rrw2ztxcxooajpsjyfrid.onion
+
+We have verified that all services and servers are in the control of the opensrc.one admins.
+
+This canary will be updated on 5/28/2023.
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEE447OdKup6b2baUWBpd+jxygFkRUFAmP+EjIACgkQpd+jxygF
+kRW8txAAkqJHvuRSAeIyeQKweS/Z6RUBn1VSV1OiVORjja0W2RpyyBxvb7r5IXNt
+rL1zYt49GfpxoDXUNPjSYwhpsiIaJp/kqxiSZKxEYfpIrAh7y2lkPZEGc/Pj8DzE
+zSS13KxktjLsSMuszPmetJgAiLV/yKARmHjTAAWyKs2oHUmI76mxUBT9YGNuBiQZ
+UCznBsjaKGrRdEFV4aHdmXezX/VOaZA+X44TM59XPyGaZjNvZrfE2Gb2DT3Tyfad
+31Gx5N0Hb1yP5AnaZ4zKMdIYBB+//IjoF9JVTcKVs1p0fMV0lfiqpI8KqCoKFBdS
+wangfsCJuyMrwN2j4VV+p4ZHggDMe58QrWh7LSfIjFl7pFX/D9+2COUt29ns37cu
+lcVB36ucr9nRgsGt+uWbvpYCmAgG4YtoeP2Iv1NuJauPJTsGiGezRtQm2WeM1Wej
++T6MalIHW5SRlTGFENez5SJyWHsUssNCpdPB1Q9U+VMWq69enDUqo+JvrejZ4arf
+iDQo2C+wRxWEcO4dsqMTZN7wHmUKim3y4CwBJnSngIQlM5uUCkdgQ5cw/gT8eRB8
+tmRS726K0KWzxu7xkVZfX24d90U5tGQBtdYUUVPpQ/DFTKzQ4u8h5hasPWA805ll
+d+caxcaJ9vk8xVTAiYmbZgQdkn47EIw0XwMifz4B+mVXYrPwu1M=
+=7A5E
+-----END PGP SIGNATURE-----
