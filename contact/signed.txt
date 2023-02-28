@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Email: ash(at)opensrc(dot)one
+
+XMPP/Jabber: opensrc@jabber.calyxinstitute.org
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEE447OdKup6b2baUWBpd+jxygFkRUFAmP9UpIACgkQpd+jxygF
+kRWvgBAAriwDoXtBfu5yJYSOWbTQbI5r0zxN7yGbcpSe64xZf+1oEPT9fjwSPwTn
+lRUyEDS9hHKdFqoKZQKHV4L+QooWtXm+E8NhBED76SMaNPbaLqR/yl/j8zpF01vM
+fjaTZaXXzgFCyb6sP7E7n1yrAr/lDirT/Cu10jnXmvBso7ZEPIvzz7OYIRwqUudX
+KBm6YOOcKsGvm0z2tBP75IMehmtsBOpAMAeUoxJMsDwNvasr+BeDaggYz6/g81rd
+Hh8UH0FjmvzzZ0WM4x7EcN7X11e5VkqOE4LTwCMxslB0tG9Qrmli/qbmzuVVh7Zz
+hDnWErxk3qhdKSMS8ocUMHb5ikSZBFmiyrZVUUJo3ZKyiehgQmldYVmw95iOc+n/
+LXevvf3EsUC14gP0cTzuE+Z9qlI1qkRh+QEb+/MKs/P1cyaMF67cF+4Qv+mCGSe9
+kgP0L3nYeDouiyyuyKeVqdlBK9uNg3htlzUBZ6Ss1iz5+pk21Bi8mz6fGj3q9D6G
+w/DBOR09nGA20d/cSTe1Qbj13UGEGK+nrP+oBaIAPTkzrBqGuyn9n30nrP3lq2QF
+M+cAwdp4gNKPK9QDnhY89cjmLxWB/NT+JZPqbI/+bgCkr1y17wyF0i3AHN7D/ijY
+9VhuOVS6y4jCr0+kS7b8XgmHcLpJc6i8YawTnVU6EeYRKrPJJyE=
+=nN5Q
+-----END PGP SIGNATURE-----

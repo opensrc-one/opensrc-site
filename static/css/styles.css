@@ -1,0 +1,290 @@
+html
+{
+	background-color: rgb(24, 24, 24);
+	font-family: 'Outfit-Regular';
+	margin: 0;
+	padding: 0;
+	scroll-behavior: smooth;
+}
+body
+{
+	color: white;
+	margin: 0;
+	padding: 0;
+}
+.center-container
+{
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+}
+.header
+{
+	background-color: rgb(24, 24, 24);
+	display: inline-block;
+	height: 120px;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+.red {
+	color: red;
+}
+.header .logo
+{
+	display: flex;
+	justify-content: center;
+	padding-top: 10px;
+}
+.header .logo img
+{
+	height: auto;
+	width: 170px;
+}
+.header .nav
+{
+	display: flex;
+	justify-content: center;
+	padding-right: 25px;
+}
+.header .nav ul
+{
+	color: white;
+	list-style-type: none;
+}
+.header .nav ul li
+{
+	display: inline;
+	font-family: 'Outfit-Bold';
+	overflow: auto;
+	padding-right: 5px;
+}
+.header .nav li a
+{
+    color: #ED333B;
+	cursor: pointer;
+	-moz-transition: .3s;
+	-ms-transition: .3s;
+	-o-transition: .3s;
+	text-decoration: none;
+	transition: .3s;
+	-webkit-transition: .3s;
+}
+.header .nav li a:hover
+{
+    color: #EC7479;
+}
+.header .nav .active
+{
+	color: white;
+}
+.header .nav .active:hover
+{
+    color: #EC7479;
+}
+.content
+{
+	display: flex;
+	justify-content: center;
+	padding-top: 100px;
+}
+.content .page
+{
+	background-color: rgb(48, 48, 48);
+	border-radius: 3px;
+	box-shadow: 1px 1px 4px 1px #0f0f0f;
+	padding-bottom: 10px;
+	padding-left: 25px;
+	padding-top: 10px;
+	-webkit-box-shadow: -1px 1px 4px 1px #0f0f0f;
+	width: 100%;
+}
+.content .page hr
+{
+    border: 1px solid #ED333B;
+	width: 90%;
+}
+.content .page .page-header h2
+{
+	color: white;
+	padding-left: 30px;
+    -webkit-text-stroke-color: #ED333B;
+	-webkit-text-stroke-width: 0.2px;
+}
+.content .page .page-content
+{
+	padding-left: 60px;
+	padding-right: 60px;
+}
+.content .page .page-content a
+{
+    color: #ED333B;
+	text-decoration: none;
+}
+.page-content li
+{
+	overflow: auto;
+}
+.content .page .node-list ul
+{
+	color: white;
+	list-style-type: none;
+	padding: 0;
+}
+.content .page .node-list li
+{
+	margin-bottom: 10px;
+	overflow: auto;
+}
+.content .page .node-list ul span h2
+{
+	color: white;
+	display: block;
+	font-family: 'Outfit-Bold';
+}
+.content .page .node-list ul span
+{
+    color: #ED333B;
+	display: block;
+	font-family: 'Outfit-Bold';
+	margin-bottom: 5px;
+}
+.content .page .node-list ul code
+{
+	background-color: rgba(0, 0, 0, 0.247);
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+.content .page .donate .crypto-address
+{
+	overflow: auto;
+}
+.content .page .contact .page-content a
+{
+    color: #ED333B;
+	text-decoration: none;
+}
+.content .page .contact-information .page-content a
+{
+    color: #ED333B;
+	text-decoration: none;
+}
+.contact-information .page-content .contact-address
+{
+	overflow: auto;
+}
+.donate .donation-form select
+{
+	background-color: rgba(0, 0, 0, 0.247);
+    border-color: #ED333B;
+	border-radius: 4px;
+	color: white;
+	display: block;
+	height: 40px;
+	margin-bottom: 20px;
+	width: 300px;
+}
+.donate .donation-form input[type="submit"]
+{
+	background-color: rgba(0, 0, 0, 0.247);
+    border-color: #ED333B;
+	border-radius: 4px;
+	border-width: thin;
+	color: white;
+	height: 30px;
+	margin-bottom: 15px;
+	width: 300px;
+}
+.donate .donation-form input[type="submit"]:hover
+{
+	background-color: rgba(0, 0, 0, 0.158);
+}
+.crypto-address textarea
+{
+	background-color: rgba(26, 26, 26, 0.247);
+	color: white;
+	display: block;
+	resize: none;
+	white-space: nowrap;
+	width: 100%;
+}
+.qr-code img
+{
+	height: auto;
+	margin-left: 20px;
+	margin-right: 20px;
+	white-space: pre-line;
+	width: 150px;
+}
+.footer
+{
+	display: flex;
+	justify-content: center;
+}
+.footer ul
+{
+	list-style-type: none;
+	padding: 0;
+}
+.footer ul li
+{
+	display: inline;
+	float: left;
+	font-family: 'Outfit-Bold';
+	padding-left: 7px;
+	padding-right: 7px;
+}
+.footer ul li a
+{
+	color: rgb(58, 58, 58);
+	text-decoration: none;
+}
+
+@media screen and (min-width: 1108px)
+{
+	.header
+	{
+		display: flex;
+		height: 95px;
+		justify-content: center;
+		position: fixed;
+		width: 62%;
+	}
+	.header .logo
+	{
+		display: inline;
+		float: left;
+		margin: auto auto auto 10px;
+	}
+	.header .logo img
+	{
+		width: 210px;
+	}
+	.header .nav
+	{
+		float: right;
+		padding: 20px;
+	}
+	.content .page
+	{
+		width: 60%;
+	}
+}
+@media screen and (max-width: 1108px)
+{
+	.header
+	{
+		height: 105px;
+		position: fixed;
+	}
+	.header .nav ul
+	{
+		color: white;
+		list-style-type: none;
+	}
+	.content .page
+	{
+		width: 80%;
+	}
+}
