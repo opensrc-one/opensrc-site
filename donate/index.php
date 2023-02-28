@@ -14,7 +14,7 @@ $selected_currency = array('ticker' => $_GET['ticker'], 'name' => $_GET['name'],
         <meta name="author" content="opensrc">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta http-equiv="Onion-Location" content="http://opensrc5aqxbfanpzgyrn2tjq7juvpuvqm5rrw2ztxcxooajpsjyfrid.onion/donate">
+<meta http-equiv="Onion-Location" content="http://opensrc5aqxbfanpzgyrn2tjq7juvpuvqm5rrw2ztxcxooajpsjyfrid.onion">
         <link rel="icon" type="image/x-icon" href="../static/img/favicon.ico">
 
         <!-- Styles -->
@@ -66,6 +66,7 @@ $selected_currency = array('ticker' => $_GET['ticker'], 'name' => $_GET['name'],
                 <li><a href="../legal/privacy-policy/" target="_blank">Privacy Policy</a></li>
                 <li><a href="https://github.com/Ashintosh/opensrc.one" target="_blank">Source</a></li>
                 <li><a href="../pgp.txt" target="_blank">PGP</a></li>
+                <li><a href="http://opensrc5aqxbfanpzgyrn2tjq7juvpuvqm5rrw2ztxcxooajpsjyfrid.onion">Onion</a></li>
             </ul>
         </div>
     </body>
