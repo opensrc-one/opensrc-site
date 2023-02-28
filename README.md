@@ -1,5 +1,4 @@
 # opensrc.one
-Source to opensrc.one website
 
 Domain: https://opensrc.one
 
