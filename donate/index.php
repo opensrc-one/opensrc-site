@@ -39,9 +39,9 @@ $coin_list = array (
                 </div>
                 <div class="nav">
                     <ul>
-                        <li><a href="../">Home</a></li>
-                        <li><a href="../xmrnode/">XMR Node</a></li>
-                        <li><a href="../contact/">Contact</a></li>
+                        <li><a href="../..">Home</a></li>
+                        <li><a href="../xmrnode">XMR Node</a></li>
+                        <li><a href="../contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -71,7 +71,7 @@ $coin_list = array (
         </div>
         <div class="footer">
             <ul>
-                <li><a href="../legal/privacy-policy/" target="_blank">Privacy Policy</a></li>
+                <li><a href="../legal/privacy-policy" target="_blank">Privacy Policy</a></li>
                 <li><a href="https://github.com/Ashintosh/opensrc.one" target="_blank">Source</a></li>
                 <li><a href="../pgp.txt" target="_blank">PGP</a></li>
                 <li><a href="http://opensrc5aqxbfanpzgyrn2tjq7juvpuvqm5rrw2ztxcxooajpsjyfrid.onion">Onion</a></li>
