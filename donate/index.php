@@ -35,7 +35,7 @@ $coin_list = array (
         <div class="center-container">
             <div class="header">
                 <div class="logo">
-                    <img src="../static/img/logo.png" alt="opensrc">
+                    <img src="../static/img/logo.png" alt="opensrc.one">
                 </div>
                 <div class="nav">
                     <ul>
