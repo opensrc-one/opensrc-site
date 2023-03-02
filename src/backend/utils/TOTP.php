@@ -7,7 +7,7 @@ use RobThree\Auth\Algorithm;
 use RobThree\Auth\TwoFactorAuth;
 use RobThree\Auth\TwoFactorAuthException;
 
-class TwoFactor {
+class TOTP {
     private TwoFactorAuth $totp;
     private const VERIFY_CONFIG = array (
         'discrepancy' => 1,

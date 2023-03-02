@@ -5,14 +5,14 @@ require_once('utils/Database.php');
 require_once('utils/Sessions.php');
 require_once('utils/Cookies.php');
 require_once('utils/Cryptography.php');
-require_once('utils/TwoFactor.php');
+require_once('utils/TOTP.php');
 require_once('utils/StringTools.php');
 
 use backend\utils\Database;
 use backend\utils\Sessions;
 use backend\utils\Cookies;
 use backend\utils\Cryptography;
-use backend\utils\TwoFactor;
+use backend\utils\TOTP;
 use backend\utils\StringTools;
 use Exception;
 use PDO;
@@ -22,7 +22,7 @@ class AccountAuth {
     private Sessions $sessions;
     private Cookies $cookies;
     private Cryptography $crypto;
-    private TwoFactor $totp;
+    private TOTP $totp;
     private StringTools $string_tools;
     private ?PDO $conn;
 
@@ -31,7 +31,7 @@ class AccountAuth {
         $this->sessions     = new Sessions();
         $this->cookies      = new Cookies();
         $this->crypto       = new Cryptography();
-        $this->totp         = new TwoFactor();
+        $this->totp         = new TOTP();
         $this->string_tools = new StringTools();
         $this->conn         = $this->database->connect();
     }

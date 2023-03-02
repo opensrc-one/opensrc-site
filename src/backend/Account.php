@@ -4,12 +4,12 @@ namespace src\backend;
 require_once('utils/Database.php');
 require_once('utils/Sessions.php');
 require_once('utils/Cryptography.php');
-require_once('utils/TwoFactor.php');
+require_once('utils/TOTP.php');
 
 use backend\utils\Database;
 use backend\utils\Sessions;
 use backend\utils\Cryptography;
-use backend\utils\TwoFactor;
+use backend\utils\TOTP;
 use Exception;
 use PDO;
 use RobThree\Auth\TwoFactorAuthException;
@@ -18,7 +18,7 @@ class Account {
     private Database $database;
     private Sessions $sessions;
     private Cryptography $crypto;
-    private TwoFactor $totp;
+    private TOTP $totp;
     private ?PDO $conn;
 
     private int $uid;
@@ -28,7 +28,7 @@ class Account {
         $this->database     = new Database();
         $this->sessions     = new Sessions();
         $this->crypto       = new Cryptography();
-        $this->totp         = new TwoFactor();
+        $this->totp         = new TOTP();
         $this->conn         = $this->database->connect();
 
         if ($uid != null) {

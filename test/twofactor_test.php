@@ -1,11 +1,11 @@
 <?php
 
-require_once ('../src/backend/utils/TwoFactor.php');
+require_once('../src/backend/utils/TOTP.php');
 require_once ('../src/backend/utils/Cryptography.php');
 
-use backend\utils\TwoFactor;
+use backend\utils\TOTP;
 
-$totp = new TwoFactor();
+$totp = new TOTP();
 
 $secret = "";
 echo $totp->verify_secret($secret, '');
