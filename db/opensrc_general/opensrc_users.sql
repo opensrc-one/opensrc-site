@@ -1,4 +1,4 @@
-create table opensrc.opensrc_users
+create table opensrc_users
 (
     uid         int auto_increment
         primary key,
@@ -9,7 +9,7 @@ create table opensrc.opensrc_users
         check (json_valid(`user_groups`)),
     mnemonic    longtext collate utf8mb4_bin                 not null
         check (json_valid(`mnemonic`)),
-    totp        longtext collate utf8mb4_bin                 not null
+    totp        longtext collate utf8mb4_bin                 null
         check (json_valid(`totp`)),
     login_key   longtext collate utf8mb4_bin                 null
         check (json_valid(`login_key`)),

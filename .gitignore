@@ -1,7 +1,6 @@
 # Directories
 .idea/
 vendor/
-test/
 
 # Files
 .env
