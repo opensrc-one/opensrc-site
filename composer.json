@@ -1,5 +1,9 @@
 {
     "require": {
-        "robthree/twofactorauth": "^2.0"
+        "robthree/twofactorauth": "^2.0",
+        "vlucas/phpdotenv": "^5.5",
+        "ext-pdo": "*",
+        "ext-openssl": "*",
+        "owenvoke/mnemonics-php": "^2.0"
     }
 }

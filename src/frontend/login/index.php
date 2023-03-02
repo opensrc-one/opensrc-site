@@ -26,7 +26,7 @@
         </div>
         <div class="nav">
             <ul>
-                <li><a href="../..">Home</a></li>
+                <li><a href="../../..">Home</a></li>
                 <li><a href="../xmrnode">XMR Node</a></li>
                 <li><a href="../guides">Guides</a></li>
                 <li><a href="../contact">Contact</a></li>
