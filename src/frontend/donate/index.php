@@ -39,7 +39,7 @@ $coin_list = array (
                 </div>
                 <div class="nav">
                     <ul>
-                        <li><a href="../../..">Home</a></li>
+                        <li><a href="../">Home</a></li>
                         <li><a href="../xmrnode">XMR Node</a></li>
                         <li><a href="../contact">Contact</a></li>
                     </ul>
@@ -50,7 +50,7 @@ $coin_list = array (
             <div class="page">
                 <div class="home">
                     <div class="page-header">
-                        <h2><?php echo($coin_list[$selected_coin]['name'] . ' (' . strtoupper($coin_ticker) . ')'); ?> Donation Address</h2>
+                        <h2><?php echo($coin_list[$coin_ticker]['name'] . ' (' . strtoupper($coin_ticker) . ')'); ?> Donation Address</h2>
                     </div>
                     <div class="page-content">
                         <p>
