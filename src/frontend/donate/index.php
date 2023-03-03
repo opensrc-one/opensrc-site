@@ -39,11 +39,7 @@ $coin_list = array (
         </div>
         <div class="nav">
             <ul>
-                <<<<<<< Updated upstream:donate/index.php
-                <li><a href="../..">Home</a></li>
-                =======
                 <li><a href="../">Home</a></li>
-                >>>>>>> Stashed changes:src/frontend/donate/index.php
                 <li><a href="../xmrnode">XMR Node</a></li>
                 <li><a href="../searxng">SearXNG</a></li>
                 <li><a href="../contact">Contact</a></li>

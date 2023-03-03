@@ -122,9 +122,22 @@ body
     color: #ED333B;
 	text-decoration: none;
 }
+.content .page .page-content a:hover
+{
+	color: #EC7479;
+}
 .page-content li
 {
 	overflow: auto;
+}
+.content .page .node-list a
+{
+	color: #ED333B;
+	text-decoration: none;
+}
+.content .page .node-list a:hover
+{
+	color: #EC7479;
 }
 .content .page .node-list ul
 {
@@ -141,13 +154,13 @@ body
 {
 	color: white;
 	display: block;
-	font-family: 'Outfit-Bold';
+	font-family: 'Outfit-Bold', serif;
 }
 .content .page .node-list ul span
 {
     color: #ED333B;
 	display: block;
-	font-family: 'Outfit-Bold';
+	font-family: 'Outfit-Bold', serif;
 	margin-bottom: 5px;
 }
 .content .page .node-list ul code
@@ -165,10 +178,22 @@ body
     color: #ED333B;
 	text-decoration: none;
 }
+.content .page .contact .page-content a:hover
+{
+    color: #EC7479;
+}
+.content .page .contact-information .page-content h3
+{
+	color: #ED333B;
+}
 .content .page .contact-information .page-content a
 {
     color: #ED333B;
-	text-decoration: none;
+	text-decoration: underline;
+}
+.content .page .contact-information .page-content a:hover
+{
+	color: #EC7479;
 }
 .contact-information .page-content .contact-address
 {
