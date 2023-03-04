@@ -45,7 +45,7 @@ class AccountAuth {
 
         // Check if password and confirm password are the same
         if ($password !== $confirm_password) {
-            $this->sessions->set('res-err', 'password_mismatch', false);
+            $this->sessions->set('res-err', 'password_mismatch');
             return false;
         }
 
@@ -53,13 +53,13 @@ class AccountAuth {
         $has_special_char = $this->string_tools->has_special($password);
         $has_number_char = $this->string_tools->has_number($password);
         if (strlen($password) < 6 || !$has_number_char || !$has_special_char) {
-            $this->sessions->set('res-err', 'invalid_password', false);
+            $this->sessions->set('res-err', 'invalid_password');
             return false;
         }
 
         // Check if username has at more than 3 characters
         if (strlen($username) < 3) {
-            $this->sessions->set('res-err', 'invalid_username', false);
+            $this->sessions->set('res-err', 'invalid_username');
             return false;
         }
 
@@ -70,7 +70,7 @@ class AccountAuth {
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            $this->sessions->set('res-err', 'username_taken', false);
+            $this->sessions->set('res-err', 'username_taken');
             return false;
         }
 
@@ -97,8 +97,8 @@ class AccountAuth {
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$username, $password_json, $mnemonic_json, $data_key_json]);
 
-        $this->sessions->set('res-data', $mnemonic_phrase, false, true);
-        $this->sessions->set('res-err', 'register_valid', false);
+        $this->sessions->set('res-data', $mnemonic_phrase, true);
+        $this->sessions->set('res-err', 'register_valid');
         return true;
     }
 
@@ -108,7 +108,7 @@ class AccountAuth {
      * @throws Exception
      */
     public function login_account ($username, $password, $totp_code = null): bool {
-        if ($this->sessions->get('user-data', false) !== null) { return true; }
+        if ($this->sessions->get('user-data') !== null) { return true; }
 
         $username_lower = strtolower($username);
 
@@ -123,7 +123,7 @@ class AccountAuth {
         $db_salt = $db_password_json['salt'];
 
         if ($stmt->rowCount() < 1 || !$this->crypto->verify_password_hash($password, $db_password_hash, $db_salt)) {
-            $this->sessions->set('res-err', 'invalid_login', false);
+            $this->sessions->set('res-err', 'invalid_login');
             return false;
         }
 
@@ -139,7 +139,7 @@ class AccountAuth {
                 || !$this->totp->verify_secret($secret, $totp_code, $totp_json['discrepancy'],
                     $totp_json['time'], $totp_json['time_slice'])
             ) {
-                $this->sessions->set('res-err', 'invalid_totp', false);
+                $this->sessions->set('res-err', 'invalid_totp');
                 return false;
             }
         }
@@ -163,7 +163,7 @@ class AccountAuth {
         ));
 
         $this->sessions->set_security_sessions();
-        $this->sessions->set('user-data', $session_data_json, true, true);
+        $this->sessions->set('user-data', $session_data_json, true);
         $this->cookies->set('res-msg', 'login_valid');
         return true;
     }

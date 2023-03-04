@@ -50,23 +50,23 @@ $coin_list = array (
 </div>
 <div class="content">
     <div class="page">
-        <div class="home">
-            <div class="page-header">
-                <h2><?php echo($coin_list[$coin_ticker]['name'] . ' (' . strtoupper($coin_ticker) . ')'); ?> Donation Address</h2>
-            </div>
-            <div class="page-content">
-                <p>
-                    Any funds sent to this wallet will be used to help develop opensrc.one software and services.
-                </p>
-            </div>
+        <div class="page-header">
+            <h2><?php echo($coin_list[$coin_ticker]['name'] . ' (' . strtoupper($coin_ticker) . ')'); ?> Donation Address</h2>
+        </div>
+        <div class="page-content">
+            <p>
+                Any funds sent to this wallet will be used to help develop opensrc.one software and services.
+            </p>
         </div>
         <hr>
-        <div class="center-container">
-            <div class="crypto-address">
-                <textarea name="" id="" cols="80" rows="8" disabled><?php echo($coin_list[$coin_ticker]['address']); ?></textarea>
-            </div>
-            <div class="qr-code">
-                <img src="../static/img/crypto-qr/<?php echo($coin_ticker . '-qr.png'); ?>" alt="QR Code">
+        <div class="page-content">
+            <div class="center-container">
+                <div class="textarea-style">
+                    <textarea name="" id="" cols="80" rows="8" disabled><?php echo($coin_list[$coin_ticker]['address']); ?></textarea>
+                </div>
+                <div class="qr-code">
+                    <img src="../static/img/crypto-qr/<?php echo($coin_ticker . '-qr.png'); ?>" alt="QR Code">
+                </div>
             </div>
         </div>
     </div>

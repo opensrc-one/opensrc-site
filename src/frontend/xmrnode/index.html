@@ -37,45 +37,39 @@
 </div>
 <div class="content">
     <div class="page">
-        <div class="home">
-            <div class="page-header">
-                <h2>XMR Node</h2>
-            </div>
-            <div class="page-content">
-                <p>
-                    This is our secure Monero remote node. This node is hosted in Norway where there are strong data privacy laws in place.
-                    This node has an open ZMQ port to allow P2Pool miners to utilize our node. This node is also available via Tor at the below onion hostname.
-                </p>
-                <p>
-                    For signed node info, click <a href="signed.txt" target="_blank">here</a>
-                </p>
-            </div>
+        <div class="page-header">
+            <h2>XMR Node</h2>
+        </div>
+        <div class="page-content">
+            <p>
+                This is our secure Monero remote node. This node is hosted in Norway where there are strong data privacy laws in place.
+                This node has an open ZMQ port to allow P2Pool miners to utilize our node. This node is also available via Tor at the below onion hostname.
+            </p>
+            <p>
+                For signed node info, click <a href="signed.txt" target="_blank">here</a>
+            </p>
         </div>
         <hr>
-        <div class="node-list">
-            <div class="page-header">
-                <h2>Node Information</h2>
+        <div class="page-header">
+            <h2>Node Information</h2>
+        </div>
+        <div class="page-content">
+            <div class="node-section">
+                <span><h2>Clearnet</h2></span>
+                <code>xmr.opensrc.one:18081</code>
             </div>
-            <div class="page-content">
-                <ul>
-                    <li>
-                        <span><h2>Clearnet</h2></span>
-                        <code>xmr.opensrc.one:18081</code>
-                    </li>
-                    <li>
-                        <span><h2>Tor</h2></span>
-                        <code>opensrci2bn7ehluy5bavbhlu2slq2sseck5ga4q52zgmtl47725l6yd.onion:18081</code>
-                    </li>
-                    <li>
-                        <span><h2>P2Pool Info</h2></span>
-                        <p>
-                            This node supports P2Pool mining. <br> <br>
-                            <b>RPC Port:</b> 18081<br>
-                            <b>ZMQ Port:</b> 18084
-                        </p>
-                        <p>Example p2pool command: <code>p2pool --host [node] --rpc-port 18081 --zmq-port 18084 --wallet [address]</code></p>
-                    </li>
-                </ul>
+            <div class="node-section">
+                <span><h2>Tor</h2></span>
+                <code>opensrci2bn7ehluy5bavbhlu2slq2sseck5ga4q52zgmtl47725l6yd.onion:18081</code>
+            </div>
+            <div class="node-section">
+                <span><h2>P2Pool Info</h2></span>
+                <p>
+                    This node supports P2Pool mining. <br> <br>
+                    <b>RPC Port:</b> 18081<br>
+                    <b>ZMQ Port:</b> 18084
+                </p>
+                <p>Example p2pool command: <code>p2pool --host [node] --rpc-port 18081 --zmq-port 18084 --wallet [address]</code></p>
             </div>
         </div>
     </div>

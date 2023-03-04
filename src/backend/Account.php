@@ -45,7 +45,7 @@ class Account {
             $this->data_key    = strval($db_data['data_key']);
             $this->login_key   = null;
         } else {
-            $session_user_data_json = $this->sessions->get('user-data', true, true);
+            $session_user_data_json = $this->sessions->get('user-data', true);
             $session_user_data      = json_decode($session_user_data_json, true);
 
             $this->uid         = intval($session_user_data['uid']);
@@ -74,7 +74,7 @@ class Account {
 
     public function set_username (string $new_username): bool {
         if (strlen($new_username) < 3) {
-            $this->sessions->set('res-err', 'invalid_username', false);
+            $this->sessions->set('res-err', 'invalid_username');
             return false;
         }
 
@@ -85,7 +85,7 @@ class Account {
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            $this->sessions->set('res-err', 'username_taken', false);
+            $this->sessions->set('res-err', 'username_taken');
             return false;
         }
 
@@ -99,7 +99,7 @@ class Account {
         $this->username = $new_username;
         $this->update_user_data_session();
 
-        $this->sessions->set('res-err', 'username_change_valid', false);
+        $this->sessions->set('res-err', 'username_change_valid');
         return true;
     }
 
@@ -116,7 +116,7 @@ class Account {
         $this->user_groups = $new_user_groups_json;
         $this->update_user_data_session();
 
-        $this->sessions->set('res-err', 'user_group_change_valid', false);
+        $this->sessions->set('res-err', 'user_group_change_valid');
         return true;
     }
 
@@ -131,7 +131,7 @@ class Account {
             $stmt->bindParam(':uid', $this->uid);
             $stmt->execute();
 
-            $this->sessions->set('res-err', 'totp_disabled', false);
+            $this->sessions->set('res-err', 'totp_disabled');
             return true;
         }
 
@@ -146,7 +146,7 @@ class Account {
         $stmt->bindParam(':uid', $this->uid);
         $stmt->execute();
 
-        $this->sessions->set('res-err', 'totp_enabled', false);
+        $this->sessions->set('res-err', 'totp_enabled');
         return true;
     }
 
@@ -178,7 +178,7 @@ class Account {
         $this->data_key = $new_data_key;
         $this->update_user_data_session();
 
-        $this->sessions->set('res-err', 'mnemonic_regenerated', false);
+        $this->sessions->set('res-err', 'mnemonic_regenerated');
         return true;
     }
 
@@ -210,6 +210,6 @@ class Account {
             'user_groups'   => $this->user_groups,
             'data_key'      => $this->data_key
         ));
-        $this->sessions->set('user-data', $new_session_data_json, false, true);
+        $this->sessions->set('user-data', $new_session_data_json, true);
     }
 }

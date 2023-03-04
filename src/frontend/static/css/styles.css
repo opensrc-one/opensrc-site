@@ -1,7 +1,7 @@
 html
 {
 	background-color: rgb(24, 24, 24);
-	font-family: 'Outfit-Regular';
+	font-family: 'Outfit-Regular', serif;
 	margin: 0;
 	padding: 0;
 	scroll-behavior: smooth;
@@ -28,9 +28,7 @@ body
 	padding: 0;
 	width: 100%;
 }
-.red {
-	color: red;
-}
+
 .header .logo
 {
 	display: flex;
@@ -56,7 +54,7 @@ body
 .header .nav ul li
 {
 	display: inline;
-	font-family: 'Outfit-Bold';
+	font-family: 'Outfit-Bold', serif;
 	overflow: auto;
 	padding-right: 5px;
 }
@@ -89,117 +87,97 @@ body
 	justify-content: center;
 	padding-top: 100px;
 }
-.content .page
+.page
 {
 	background-color: rgb(48, 48, 48);
 	border-radius: 3px;
 	box-shadow: 1px 1px 4px 1px #0f0f0f;
-	padding-bottom: 10px;
+	padding-bottom: 20px;
 	padding-left: 25px;
 	padding-top: 10px;
 	-webkit-box-shadow: -1px 1px 4px 1px #0f0f0f;
 	width: 100%;
 }
-.content .page hr
+.page hr
 {
     border: 1px solid #ED333B;
 	width: 90%;
 }
-.content .page .page-header h2
+
+.page-header p
+{
+	padding-left: 60px;
+	padding-right: 60px;
+	padding-bottom: 5px;
+}
+.page-header h2
 {
 	color: white;
 	padding-left: 30px;
     -webkit-text-stroke-color: #ED333B;
 	-webkit-text-stroke-width: 0.2px;
 }
-.content .page .page-content
+.page-header a
+{
+	color: #ED333B;
+	text-decoration: none;
+}
+.page-header a:hover
+{
+	color: #EC7479;
+}
+
+.page-content
 {
 	padding-left: 60px;
 	padding-right: 60px;
 }
-.content .page .page-content a
+.page-content a
 {
     color: #ED333B;
 	text-decoration: none;
 }
-.content .page .page-content a:hover
+.page-content a:hover
 {
 	color: #EC7479;
+}
+.page-content h2
+{
+	color: white;
+	display: block;
+	font-family: 'Outfit-Bold', serif;
 }
 .page-content li
 {
 	overflow: auto;
 }
-.content .page .node-list a
-{
-	color: #ED333B;
-	text-decoration: none;
-}
-.content .page .node-list a:hover
-{
-	color: #EC7479;
-}
-.content .page .node-list ul
-{
-	color: white;
-	list-style-type: none;
-	padding: 0;
-}
-.content .page .node-list li
-{
-	margin-bottom: 10px;
-	overflow: auto;
-}
-.content .page .node-list ul span h2
-{
-	color: white;
-	display: block;
-	font-family: 'Outfit-Bold', serif;
-}
-.content .page .node-list ul span
-{
-    color: #ED333B;
-	display: block;
-	font-family: 'Outfit-Bold', serif;
-	margin-bottom: 5px;
-}
-.content .page .node-list ul code
+.page-content code
 {
 	background-color: rgba(0, 0, 0, 0.247);
 	font-size: 14px;
 	margin-bottom: 5px;
 }
-.content .page .donate .crypto-address
+.page-content .textarea-style
 {
 	overflow: auto;
 }
-.content .page .contact .page-content a
-{
-    color: #ED333B;
-	text-decoration: none;
-}
-.content .page .contact .page-content a:hover
-{
-    color: #EC7479;
-}
-.content .page .contact-information .page-content h3
+
+
+.info-content h3
 {
 	color: #ED333B;
 }
-.content .page .contact-information .page-content a
+.info-content a
 {
     color: #ED333B;
 	text-decoration: underline;
 }
-.content .page .contact-information .page-content a:hover
+.info-content a:hover
 {
 	color: #EC7479;
 }
-.contact-information .page-content .contact-address
-{
-	overflow: auto;
-}
-.donate .donation-form select
+
+.form-style select
 {
 	background-color: rgba(0, 0, 0, 0.247);
     border-color: #ED333B;
@@ -210,7 +188,7 @@ body
 	margin-bottom: 20px;
 	width: 300px;
 }
-.donate .donation-form input[type="submit"]
+.form-style input[type="submit"]
 {
 	background-color: rgba(0, 0, 0, 0.247);
     border-color: #ED333B;
@@ -221,10 +199,11 @@ body
 	margin-bottom: 15px;
 	width: 300px;
 }
-.donate .donation-form input[type="submit"]:hover
+.form-style input[type="submit"]:hover
 {
 	background-color: rgba(0, 0, 0, 0.158);
 }
+
 .crypto-address textarea
 {
 	background-color: rgba(26, 26, 26, 0.247);
@@ -234,6 +213,7 @@ body
 	white-space: nowrap;
 	width: 100%;
 }
+
 .qr-code img
 {
 	height: auto;
@@ -242,6 +222,7 @@ body
 	white-space: pre-line;
 	width: 150px;
 }
+
 .footer
 {
 	display: flex;
@@ -256,7 +237,7 @@ body
 {
 	display: inline;
 	float: left;
-	font-family: 'Outfit-Bold';
+	font-family: 'Outfit-Bold', serif;
 	padding-left: 7px;
 	padding-right: 7px;
 }
@@ -265,6 +246,7 @@ body
 	color: rgb(58, 58, 58);
 	text-decoration: none;
 }
+
 
 @media screen and (min-width: 1108px)
 {

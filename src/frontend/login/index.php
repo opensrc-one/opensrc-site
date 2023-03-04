@@ -26,7 +26,7 @@
         </div>
         <div class="nav">
             <ul>
-                <li><a href="../../..">Home</a></li>
+                <li><a href="../">Home</a></li>
                 <li><a href="../xmrnode">XMR Node</a></li>
                 <li><a href="../guides">Guides</a></li>
                 <li><a href="../contact">Contact</a></li>
@@ -36,30 +36,27 @@
 </div>
 <div class="content">
     <div class="page">
-        <div class="home">
-            <div class="page-header">
-                <h2>Login</h2>
-            </div>
-            <div class="page-content">
-                <p>
-                    Admin login for opensrc.one.
-                </p>
-            </div>
+        <div class="page-header">
+            <h2>Login</h2>
+        </div>
+        <div class="page-content">
+            <p>
+                Admin login for opensrc.one.
+            </p>
         </div>
         <hr>
-        <div class="home">
-            <div class="page-content">
-                <form action="login.php" method="post">
-                    <label>Username</label>
-                    <input type="text" name="username" required>
+        <div class="page-content">
+            <form action="login.php" method="post">
+                <label>Username</label>
+                <input type="text" name="username" required>
 
-                    <label>Password</label>
-                    <input type="password" name="password" required>
+                <label>Password</label>
+                <input type="password" name="password" required>
 
-                    <input type="submit" name="request-login" value="Login">
-                </form>
-            </div>
+                <input type="submit" name="request-login" value="Login">
+            </form>
         </div>
+
     </div>
 </div>
 <div class="footer">
