@@ -3,20 +3,24 @@ namespace src\backend;
 
 require_once('utils/Database.php');
 require_once('utils/Sessions.php');
+require_once('utils/Cookies.php');
 require_once('utils/Cryptography.php');
 require_once('utils/TOTP.php');
 
 use backend\utils\Database;
 use backend\utils\Sessions;
+use backend\utils\Cookies;
 use backend\utils\Cryptography;
 use backend\utils\TOTP;
-use Exception;
-use PDO;
 use RobThree\Auth\TwoFactorAuthException;
+
+use PDO;
+
 
 class Account {
     private Database $database;
     private Sessions $sessions;
+    private Cookies $cookies;
     private Cryptography $crypto;
     private TOTP $totp;
     private ?PDO $conn;
@@ -27,13 +31,14 @@ class Account {
     public function __construct ($uid = null) {
         $this->database     = new Database();
         $this->sessions     = new Sessions();
+        $this->cookies      = new Cookies();
         $this->crypto       = new Cryptography();
         $this->totp         = new TOTP();
         $this->conn         = $this->database->connect();
 
         if ($uid != null) {
             $query = "SELECT uid, username, user_groups, data_key FROM `opensrc_users` WHERE uid = :uid";
-            $stmt = $this->conn->prepare($query);
+            $stmt  = $this->conn->prepare($query);
 
             $stmt->bindParam(':uid', $uid);
             $stmt->execute();
@@ -74,7 +79,7 @@ class Account {
 
     public function set_username (string $new_username): bool {
         if (strlen($new_username) < 3) {
-            $this->sessions->set('res-err', 'invalid_username');
+            $this->cookies->set('res-err', 'invalid_username');
             return false;
         }
 
@@ -85,7 +90,7 @@ class Account {
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            $this->sessions->set('res-err', 'username_taken');
+            $this->cookies->set('res-err', 'username_taken');
             return false;
         }
 
@@ -99,7 +104,7 @@ class Account {
         $this->username = $new_username;
         $this->update_user_data_session();
 
-        $this->sessions->set('res-err', 'username_change_valid');
+        $this->cookies->set('res-err', 'username_change_valid');
         return true;
     }
 
@@ -116,7 +121,7 @@ class Account {
         $this->user_groups = $new_user_groups_json;
         $this->update_user_data_session();
 
-        $this->sessions->set('res-err', 'user_group_change_valid');
+        $this->cookies->set('res-err', 'user_group_change_valid');
         return true;
     }
 
@@ -131,7 +136,7 @@ class Account {
             $stmt->bindParam(':uid', $this->uid);
             $stmt->execute();
 
-            $this->sessions->set('res-err', 'totp_disabled');
+            $this->cookies->set('res-err', 'totp_disabled');
             return true;
         }
 
@@ -146,14 +151,11 @@ class Account {
         $stmt->bindParam(':uid', $this->uid);
         $stmt->execute();
 
-        $this->sessions->set('res-err', 'totp_enabled');
+        $this->cookies->set('res-err', 'totp_enabled');
         return true;
     }
 
     // TODO: Re-crypt data stored using mnemonic encryption key
-    /**
-     * @throws Exception
-     */
     public function regenerate_mnemonic ($password): bool {
         $new_mnemonic      = $this->crypto->generate_mnemonic();
         $new_mnemonic_hex  = $new_mnemonic['hex'];
@@ -178,7 +180,7 @@ class Account {
         $this->data_key = $new_data_key;
         $this->update_user_data_session();
 
-        $this->sessions->set('res-err', 'mnemonic_regenerated');
+        $this->cookies->set('res-err', 'mnemonic_regenerated');
         return true;
     }
 

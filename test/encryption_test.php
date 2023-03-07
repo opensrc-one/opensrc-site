@@ -37,3 +37,11 @@ echo "\n\n";
 
 $pbkdf2_key = $crypto->pbkdf2_hash($plain_text, $salt);
 echo $pbkdf2_key;
+
+echo "\n\n";
+
+$registration_key = 'opensrc-' . $crypto->create_secure_random_string(32);
+$registration_key_hash = hash('sha512', $registration_key);
+echo $registration_key;
+echo "\n";
+echo $registration_key_hash;

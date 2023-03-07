@@ -190,6 +190,7 @@ body
 }
 .form-style input[type="submit"]
 {
+	display: block;
 	background-color: rgba(0, 0, 0, 0.247);
     border-color: #ED333B;
 	border-radius: 4px;
@@ -202,6 +203,43 @@ body
 .form-style input[type="submit"]:hover
 {
 	background-color: rgba(0, 0, 0, 0.158);
+}
+
+.form-style-access
+{
+	padding-top: 25px;
+	text-align: center;
+}
+.form-style-access input[type="text"], input[type="password"], input[type="email"]
+{
+	color: white;
+	background-color: rgb(24, 24, 24);
+	margin-bottom: 17px;
+	border-width: 0;
+	width: 90%;
+}
+.form-style-access label
+{
+	display: block;
+	padding-bottom: 7px;
+}
+.form-style-access input[type="submit"]
+{
+	display: block;
+	background-color: rgba(0, 0, 0, 0.247);
+	border-color: #ED333B;
+	border-radius: 4px;
+	border-width: thin;
+	color: white;
+	height: 30px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	width: 250px;
+}
+.form-style-access input[type="submit"]:hover
+{
+	background-color: rgba(0, 0, 0, 0.158);
+
 }
 
 .crypto-address textarea

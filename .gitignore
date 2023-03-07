@@ -3,4 +3,4 @@
 vendor/
 
 # Files
-.env
+src/backend/utils/.env

@@ -4,8 +4,9 @@ namespace backend\utils;
 require_once (realpath(dirname(__FILE__) . '/../../../vendor/autoload.php'));
 
 use Exception;
-use OwenVoke\Mnemonics\DefaultWordList;
-use OwenVoke\Mnemonics\Mnemonic;
+use FurqanSiddiqui\BIP39\BIP39;
+use FurqanSiddiqui\BIP39\Exception\MnemonicException;
+use FurqanSiddiqui\BIP39\Exception\WordListException;
 
 class Cryptography {
     private const ARGON_CONFIG = array (
@@ -18,11 +19,9 @@ class Cryptography {
         'iterations' => 1000
     );
 
-    /**
-     * @throws Exception
-     */
     // Create secure random string using random_int()
-    public function create_secure_random_string (int $length = 128, bool $symbols = false): string {
+    public function create_secure_random_string (int $length = 128, bool $symbols = false): string|null {
+        // If length is above 1024 or below 1, correct it to the closest valid length
         if ($length < 1)    $length = 1;
         if ($length > 1024) $length = 1024;
 
@@ -37,9 +36,16 @@ class Cryptography {
         $pieces = [];
         $max = mb_strlen($keyspace, '8bit') - 1;
 
+        // Gets a char from the keyspace using random_int as index value
         for ($i = 0; $i < $length; ++$i) {
-            $pieces []= $keyspace[random_int(0, $max)];
+            try {
+                $pieces[] = $keyspace[random_int(0, $max)];
+            } catch (Exception $e) {
+                echo 'Error encountered: ' . $e;
+                return null;
+            }
         }
+        // Returns array as string
         return implode('', $pieces);
     }
 
@@ -107,14 +113,17 @@ class Cryptography {
         return password_verify($salted_password_hash, $password_hash);
     }
 
-    /**
-     * @throws Exception
-     */
     // Creates mnemonic of specific length
-    public function generate_mnemonic (int $entropy_length = 16): array {
-        $entropy = $this->create_secure_random_string($entropy_length);
-        $generator = new Mnemonic(DefaultWordList::WORDS);
-        $split_mnemonic = $generator->toMnemonic($entropy);
+    public function generate_mnemonic (int $length = 24): array {
+        $mnemonic = null;
+
+        try {
+            $mnemonic = BIP39::Generate($length);
+        } catch (MnemonicException | WordListException $e) {
+            echo "Error occurred: " . $e;
+        }
+
+        $split_mnemonic = $mnemonic->words;
 
         $mnemonic = implode(' ', $split_mnemonic);
         $mnemonic_no_whitespace = preg_replace('/\s*/', '', $mnemonic);

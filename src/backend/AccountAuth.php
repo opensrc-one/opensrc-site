@@ -14,7 +14,6 @@ use backend\utils\Cookies;
 use backend\utils\Cryptography;
 use backend\utils\TOTP;
 use backend\utils\StringTools;
-use Exception;
 use PDO;
 
 class AccountAuth {
@@ -36,16 +35,13 @@ class AccountAuth {
         $this->conn         = $this->database->connect();
     }
 
-    /**
-     * @throws Exception
-     */
-    public function create_account ($username, $password, $confirm_password): bool {
+    public function create_account ($username, $password, $confirm_password, $registration_key = false): bool {
         $username = $this->string_tools->sanitize_string($username);
         $username_lower = strtolower($username);
 
         // Check if password and confirm password are the same
         if ($password !== $confirm_password) {
-            $this->sessions->set('res-err', 'password_mismatch');
+            $this->cookies->set('res-err', 'password_mismatch');
             return false;
         }
 
@@ -53,13 +49,13 @@ class AccountAuth {
         $has_special_char = $this->string_tools->has_special($password);
         $has_number_char = $this->string_tools->has_number($password);
         if (strlen($password) < 6 || !$has_number_char || !$has_special_char) {
-            $this->sessions->set('res-err', 'invalid_password');
+            $this->cookies->set('res-err', 'invalid_password');
             return false;
         }
 
         // Check if username has at more than 3 characters
         if (strlen($username) < 3) {
-            $this->sessions->set('res-err', 'invalid_username');
+            $this->cookies->set('res-err', 'invalid_username');
             return false;
         }
 
@@ -70,8 +66,31 @@ class AccountAuth {
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            $this->sessions->set('res-err', 'username_taken');
+            $this->cookies->set('res-err', 'username_taken');
             return false;
+        }
+
+        if ($registration_key) {
+            $registration_key_hash = hash('sha512', $registration_key);
+
+            $query = "SELECT id, `key`, status FROM `opensrc_registration_keys` WHERE `key` = :key";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':key', $registration_key_hash);
+            $stmt->execute();
+
+            $registration_key_data = $stmt->fetch();
+
+            if ($stmt->rowCount() < 1 || !$registration_key_data['status']) {
+                $this->cookies->set('res-err', 'invalid_registration_key');
+                return false;
+            }
+
+            $status = 0;
+            $query = "UPDATE `opensrc_registration_keys` SET status = :status WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':status', $status);
+            $stmt->bindParam(':id', $registration_key_data['id']);
+            $stmt->execute();
         }
 
         $mnemonic = $this->crypto->generate_mnemonic();
@@ -98,15 +117,11 @@ class AccountAuth {
         $stmt->execute([$username, $password_json, $mnemonic_json, $data_key_json]);
 
         $this->sessions->set('res-data', $mnemonic_phrase, true);
-        $this->sessions->set('res-err', 'register_valid');
+        $this->cookies->set('res-err', 'register_valid');
         return true;
     }
 
     // Verify user login using username, password, and/or TOTP
-
-    /**
-     * @throws Exception
-     */
     public function login_account ($username, $password, $totp_code = null): bool {
         if ($this->sessions->get('user-data') !== null) { return true; }
 
@@ -123,7 +138,7 @@ class AccountAuth {
         $db_salt = $db_password_json['salt'];
 
         if ($stmt->rowCount() < 1 || !$this->crypto->verify_password_hash($password, $db_password_hash, $db_salt)) {
-            $this->sessions->set('res-err', 'invalid_login');
+            $this->cookies->set('res-err', 'invalid_login');
             return false;
         }
 
@@ -137,9 +152,9 @@ class AccountAuth {
             if (
                 $totp_code == null
                 || !$this->totp->verify_secret($secret, $totp_code, $totp_json['discrepancy'],
-                    $totp_json['time'], $totp_json['time_slice'])
+                                               $totp_json['time'], $totp_json['time_slice'])
             ) {
-                $this->sessions->set('res-err', 'invalid_totp');
+                $this->cookies->set('res-err', 'invalid_totp');
                 return false;
             }
         }
@@ -162,9 +177,49 @@ class AccountAuth {
             'login_key'     => $login_key
         ));
 
-        $this->sessions->set_security_sessions();
         $this->sessions->set('user-data', $session_data_json, true);
         $this->cookies->set('res-msg', 'login_valid');
         return true;
+    }
+
+    public function set_password ($uid, $new_password, $current_password = false, $mnemonic = false): bool {
+        $query = "SELECT uid, password, mnemonic, data_key FROM `opensrc_users` WHERE uid = :uid";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':uid', $uid);
+        $stmt->execute();
+
+        $db_data = $stmt->fetch();
+
+        $password_hash_array = json_decode($db_data['password'], true);
+        $password_hash = $password_hash_array['password_hash'];
+        $password_salt = $password_hash_array['salt'];
+
+        $data_key_array = json_decode($db_data['data_key'], true);
+        $data_key = $data_key_array['key'];
+        $data_key_salt = $data_key_array['salt'];
+
+        // $this->crypto->pbkdf2_hash($password, $data_key_salt, 256);
+
+        if ($this->crypto->verify_password_hash($current_password, $password_hash, $password_salt)) {
+            $data_key_encryption_key = $this->crypto->pbkdf2_hash($current_password, $data_key_salt, 256);
+            $decrypted_data_key = $this->crypto->decrypt_string($data_key, $data_key_encryption_key);
+
+            $new_data_key_salt = $this->crypto->create_secure_random_string(32);
+            $new_data_key_encryption_key = $this->crypto->pbkdf2_hash($new_password, $new_data_key_salt, 256);
+            $new_encrypted_data_key = $this->crypto->encrypt_string($decrypted_data_key, $new_data_key_encryption_key);
+            $new_data_key_json = json_encode(array('key' => $new_encrypted_data_key, 'salt' => $new_data_key_salt));
+
+            // Generate salt and create password hash
+            $new_password_salt = $this->crypto->create_secure_random_string(32);
+            $new_password_hash = $this->crypto->hash_password($new_password, $new_password_salt);
+            $new_password_json = json_encode(array('password_hash' => $new_password_hash, 'salt' => $new_password_salt));
+
+            $query = "UPDATE `opensrc_users` SET password = :password, data_key = :data_key WHERE uid = :uid";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':password', $new_password_json);
+            $stmt->bindParam(':data_key', $new_data_key_json);
+            $stmt->bindParam(':uid', $uid);
+            $stmt->execute();
+        }
     }
 }

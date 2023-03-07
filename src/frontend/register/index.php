@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>opensrc.one - Login</title>
+    <title>opensrc.one - Register</title>
 
     <meta charset="UTF-8">
     <meta name="description" content="Open source software and services.">
@@ -9,7 +9,7 @@
     <meta name="author" content="opensrc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Onion-Location" content="http://opensrc5aqxbfanpzgyrn2tjq7juvpuvqm5rrw2ztxcxooajpsjyfrid.onion/login">
+    <meta http-equiv="Onion-Location" content="http://opensrc5aqxbfanpzgyrn2tjq7juvpuvqm5rrw2ztxcxooajpsjyfrid.onion/register">
     <link rel="icon" type="image/x-icon" href="../static/img/favicon.ico">
 
     <!-- Styles -->
@@ -37,25 +37,31 @@
 <div class="content">
     <div class="page">
         <div class="page-header">
-            <h2>Login</h2>
+            <h2>Register</h2>
         </div>
         <div class="page-content">
             <p>
-                Admin login for opensrc.one.
+                Admin registration for opensrc.one.
             </p>
         </div>
         <hr>
         <div class="page-content">
             <div class="center-container">
                 <div class="form-style-access">
-                    <form action="login.php" method="post">
+                    <form action="register.php" method="post">
                         <label>Username</label>
                         <input type="text" name="username" required>
 
                         <label>Password</label>
                         <input type="password" name="password" required>
 
-                        <input type="submit" name="request-login" value="Login">
+                        <label>Confirm Password</label>
+                        <input type="password" name="confirm-password" required>
+
+                        <label>Registration Key</label>
+                        <input type="password" name="registration-key" required>
+
+                        <input type="submit" name="request-register" value="Register">
                     </form>
                 </div>
             </div>
@@ -67,7 +73,7 @@
         <li><a href="../privacy-policy" target="_blank">Privacy Policy</a></li>
         <li><a href="https://github.com/Ashintosh/opensrc.one" target="_blank">Source</a></li>
         <li><a href="../pgp.txt" target="_blank">PGP</a></li>
-        <li><a href="http://opensrc5aqxbfanpzgyrn2tjq7juvpuvqm5rrw2ztxcxooajpsjyfrid.onion/login">Onion</a></li>
+        <li><a href="http://opensrc5aqxbfanpzgyrn2tjq7juvpuvqm5rrw2ztxcxooajpsjyfrid.onion/register">Onion</a></li>
         <li><a href="../canary.txt" target="_blank">Canary</a></li>
     </ul>
 </div>
